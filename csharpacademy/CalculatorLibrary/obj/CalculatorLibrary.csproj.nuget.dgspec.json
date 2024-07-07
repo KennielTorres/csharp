@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/MathGame.csproj": {}
+    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj": {}
   },
   "projects": {
-    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/MathGame.csproj": {
+    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/MathGame.csproj",
-        "projectName": "MathGame",
-        "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/MathGame.csproj",
+        "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj",
+        "projectName": "CalculatorLibrary",
+        "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj",
         "packagesPath": "/Users/kenniel/.nuget/packages/",
-        "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/obj/",
+        "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kenniel/.nuget/NuGet/NuGet.Config"
@@ -42,6 +42,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

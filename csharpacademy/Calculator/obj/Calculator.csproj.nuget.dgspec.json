@@ -1,17 +1,79 @@
 {
   "format": 1,
   "restore": {
-    "/Users/kenniel/Desktop/Code/csharp/Calculator/Calculator.csproj": {}
+    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/Calculator.csproj": {}
   },
   "projects": {
-    "/Users/kenniel/Desktop/Code/csharp/Calculator/Calculator.csproj": {
+    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/Calculator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/Calculator/Calculator.csproj",
+        "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/Calculator.csproj",
         "projectName": "Calculator",
-        "projectPath": "/Users/kenniel/Desktop/Code/csharp/Calculator/Calculator.csproj",
+        "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/Calculator.csproj",
         "packagesPath": "/Users/kenniel/.nuget/packages/",
-        "outputPath": "/Users/kenniel/Desktop/Code/csharp/Calculator/obj/",
+        "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/kenniel/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj": {
+                "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.302/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj",
+        "projectName": "CalculatorLibrary",
+        "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj",
+        "packagesPath": "/Users/kenniel/.nuget/packages/",
+        "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/kenniel/.nuget/NuGet/NuGet.Config"
@@ -42,6 +104,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

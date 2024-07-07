@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Project1/MathGame/MathGame.csproj",
+      "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/MathGame.csproj",
       "projectName": "MathGame",
-      "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Project1/MathGame/MathGame.csproj",
+      "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/MathGame.csproj",
       "packagesPath": "/Users/kenniel/.nuget/packages/",
-      "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Project1/MathGame/obj/",
+      "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/MathGame/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kenniel/.nuget/NuGet/NuGet.Config"

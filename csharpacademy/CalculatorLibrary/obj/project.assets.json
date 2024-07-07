@@ -14,19 +14,6 @@
             "related": ".xml"
           }
         }
-      },
-      "CalculatorLibrary/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "dependencies": {
-          "Newtonsoft.Json": "13.0.3"
-        },
-        "compile": {
-          "bin/placeholder/CalculatorLibrary.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CalculatorLibrary.dll": {}
-        }
       }
     }
   },
@@ -60,16 +47,11 @@
         "newtonsoft.json.nuspec",
         "packageIcon.png"
       ]
-    },
-    "CalculatorLibrary/1.0.0": {
-      "type": "project",
-      "path": "../CalculatorLibrary/CalculatorLibrary.csproj",
-      "msbuildProject": "../CalculatorLibrary/CalculatorLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "CalculatorLibrary >= 1.0.0"
+      "Newtonsoft.Json >= 13.0.3"
     ]
   },
   "packageFolders": {
@@ -78,11 +60,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/Calculator.csproj",
-      "projectName": "Calculator",
-      "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/Calculator.csproj",
+      "projectUniqueName": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj",
+      "projectName": "CalculatorLibrary",
+      "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj",
       "packagesPath": "/Users/kenniel/.nuget/packages/",
-      "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/Calculator/obj/",
+      "outputPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/kenniel/.nuget/NuGet/NuGet.Config"
@@ -96,11 +78,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj": {
-              "projectPath": "/Users/kenniel/Desktop/Code/csharp/csharpacademy/CalculatorLibrary/CalculatorLibrary.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {
@@ -117,6 +95,12 @@
     "frameworks": {
       "net8.0": {
         "targetAlias": "net8.0",
+        "dependencies": {
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",

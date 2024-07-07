@@ -5,9 +5,11 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "csharpacademy", "csharpacademy", "{09CB8010-15EE-4212-B8AA-8550012C7D76}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Project1", "Project1", "{87D9793A-6A1F-4017-AC4B-D55178C320EA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "csharpacademy\Calculator\Calculator.csproj", "{BC97A1EF-4244-4244-B7D4-29B259E3A357}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathGame", "csharpacademy\Project1\MathGame\MathGame.csproj", "{1D6836D8-2F57-4035-A17F-1C5B615BA8C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathGame", "csharpacademy\MathGame\MathGame.csproj", "{8615B491-9885-4319-A20B-5B2F415491FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLibrary", "csharpacademy\CalculatorLibrary\CalculatorLibrary.csproj", "{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,17 +17,26 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1D6836D8-2F57-4035-A17F-1C5B615BA8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1D6836D8-2F57-4035-A17F-1C5B615BA8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1D6836D8-2F57-4035-A17F-1C5B615BA8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1D6836D8-2F57-4035-A17F-1C5B615BA8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC97A1EF-4244-4244-B7D4-29B259E3A357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BC97A1EF-4244-4244-B7D4-29B259E3A357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BC97A1EF-4244-4244-B7D4-29B259E3A357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BC97A1EF-4244-4244-B7D4-29B259E3A357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8615B491-9885-4319-A20B-5B2F415491FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8615B491-9885-4319-A20B-5B2F415491FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8615B491-9885-4319-A20B-5B2F415491FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8615B491-9885-4319-A20B-5B2F415491FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{87D9793A-6A1F-4017-AC4B-D55178C320EA} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
-		{1D6836D8-2F57-4035-A17F-1C5B615BA8C4} = {87D9793A-6A1F-4017-AC4B-D55178C320EA}
+		{BC97A1EF-4244-4244-B7D4-29B259E3A357} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
+		{8615B491-9885-4319-A20B-5B2F415491FD} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
+		{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4E8BA7F-1AF4-4356-B3AD-C5D5DF6A1803}
