@@ -10,6 +10,7 @@ namespace CalculatorProgram
         static void Main(string[] args)
         {
             bool endApp = false;
+            bool exitMenu = false;
             // Display title as the C# console calculator app.
             Console.WriteLine("Console Calculator in C#\r");
             Console.WriteLine("------------------------\n");
@@ -21,24 +22,81 @@ namespace CalculatorProgram
                 // Use Nullable types (with ?) to match type of System.Console.ReadLine
                 string? numInput1 = "";
                 string? numInput2 = "";
+                string? mainMenuOption = "";
+                string? historyMenuOption = "";
+                bool pastResult = false;
+                int index;
+                double cleanNum1 = 0;
+                double cleanNum2 = 0;
                 double result = 0;
 
-                // Ask the user to type the first number.
-                Console.Write("Type a number, and then press Enter: ");
-                numInput1 = Console.ReadLine();
+                while(!exitMenu){
+                    Console.WriteLine("Perform operation or see history?");
+                    Console.WriteLine("1. Perform operation");
+                    Console.WriteLine("2. See history");
+                    Console.WriteLine("Your option? ");
+                    mainMenuOption = Console.ReadLine();
 
-                double cleanNum1 = 0;
-                while (!double.TryParse(numInput1, out cleanNum1))
-                {
-                    Console.Write("This is not valid input. Please enter an integer value: ");
+                    switch (mainMenuOption){
+                        case "1":
+                            exitMenu = true;
+                            break;
+                        case "2":
+                            Console.WriteLine("");
+                            calculator.GetOperationHistory();
+                            Console.WriteLine("\nPress any key to continue...");
+                            Console.ReadLine();
+                            // History menu: Clear history, or use past operation result.
+                            Console.WriteLine("Mange your history");
+                            Console.WriteLine("1. Clear history");
+                            Console.WriteLine("2. Use past result");
+                            Console.WriteLine("3. Exit to main menu");
+                            Console.WriteLine("Your option? ");
+                            historyMenuOption = Console.ReadLine();
+
+                            switch (historyMenuOption){
+                                case "1":
+                                    calculator.DeleteOperationHistory();
+                                    break;
+                                case "2":
+                                    pastResult = true;
+                                    Console.WriteLine("Indicate the index of the result you would like to use.");
+                                    Console.Write("\t*Can be seen on the left of the history screen: ");
+                                    try{
+                                        index = Convert.ToInt32(Console.ReadLine());
+                                        cleanNum1 = calculator.GetPastResult(index);
+                                    }
+                                    catch{
+                                        Console.WriteLine("This is not valid input. Please enter an integer value: ");
+                                        index = Convert.ToInt32(Console.ReadLine());
+                                        cleanNum1 = calculator.GetPastResult(index);
+                                    }
+                                    exitMenu = true;
+                                    break;
+                                case "3":
+                                    break;
+                            }
+                            break;
+                    }
+                }
+                
+                // If past result is not used
+                if (!pastResult) {
+                    // Ask the user to type the first number.
+                    Console.Write("Type a number, and then press Enter: ");
                     numInput1 = Console.ReadLine();
+
+                    while (!double.TryParse(numInput1, out cleanNum1))
+                    {
+                        Console.Write("This is not valid input. Please enter an integer value: ");
+                        numInput1 = Console.ReadLine();
+                    }
                 }
 
                 // Ask the user to type the second number.
                 Console.Write("Type another number, and then press Enter: ");
                 numInput2 = Console.ReadLine();
 
-                double cleanNum2 = 0;
                 while (!double.TryParse(numInput2, out cleanNum2))
                 {
                     Console.Write("This is not valid input. Please enter an integer value: ");
@@ -80,7 +138,12 @@ namespace CalculatorProgram
 
                 // Wait for the user to respond before closing.
                 Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
-                if (Console.ReadLine() == "n") endApp = true;
+                if (Console.ReadLine() == "n") {
+                    endApp = true;
+                }
+                else{
+                    exitMenu = false;
+                }
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
