@@ -6,6 +6,7 @@ namespace CalculatorLibrary
     {
 
         JsonWriter writer;
+        int operationCounter;
 
         public Calculator()
         {
@@ -16,6 +17,7 @@ namespace CalculatorLibrary
             writer.WriteStartObject();
             writer.WritePropertyName("Operations");
             writer.WriteStartArray();
+            operationCounter = 0;
         }
 
         public double DoOperation(double num1, double num2, string op)
@@ -33,20 +35,24 @@ namespace CalculatorLibrary
                 case "a":
                     result = num1 + num2;
                     writer.WriteValue("Add");
+                    operationCounter++;
                     break;
                 case "s":
                     result = num1 - num2;
                     writer.WriteValue("Subtract");
+                    operationCounter++;
                     break;
                 case "m":
                     result = num1 * num2;
                     writer.WriteValue("Multiply");
+                    operationCounter++;
                     break;
                 case "d":
                     // Ask the user to enter a non-zero divisor.
                     if (num2 != 0)
                     {
                         result = num1 / num2;
+                        operationCounter++;
                     }
                     writer.WriteValue("Divide");
                     break;
@@ -64,6 +70,8 @@ namespace CalculatorLibrary
         public void Finish()
         {
             writer.WriteEndArray();
+            writer.WritePropertyName("TotalOperations");
+            writer.WriteValue(operationCounter);
             writer.WriteEndObject();
             writer.Close();
         }
