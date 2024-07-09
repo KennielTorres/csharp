@@ -1,4 +1,6 @@
 ﻿
+using System.Collections.Generic;
+using System.Globalization;
 using Microsoft.Data.Sqlite;
 
 namespace HabitLogger{
@@ -46,7 +48,7 @@ namespace HabitLogger{
                         closeApp = true;
                         break;
                     case "1":
-                        // ViewAllRecords();
+                        ViewRecords();
                         break;
                     case "2":
                         InsertRecord();
@@ -102,7 +104,45 @@ namespace HabitLogger{
             return Convert.ToInt32(numberInput);
         }
 
-        
+        internal static void ViewRecords(){
+            using (var connection = new SqliteConnection(connectionString)){
+                connection.Open();
+                var tableCmd = connection.CreateCommand();
+                tableCmd.CommandText = "SELECT * FROM habits";
+                List<Habits> habitsTableData = new List<Habits>();    
+                SqliteDataReader reader = tableCmd.ExecuteReader();
+
+                if(reader.HasRows){
+                    while (reader.Read()){
+                        habitsTableData.Add(
+                            new Habits{
+                                Id = reader.GetInt32(0),
+                                Date = DateTime.ParseExact(reader.GetString(1), "dd-MM-yyyy", new CultureInfo("en-US")),
+                                Habit = reader.GetString(2),
+                                Quantity = reader.GetInt32(3)
+                            }
+                        );
+                    }
+                }
+                else{
+                    Console.WriteLine("No Records Found.");
+                }
+                connection.Close();
+
+                Console.WriteLine("\n\n----------Habits Table----------\n");
+                foreach (var habit in habitsTableData) {
+                    Console.WriteLine($"{habit.Id} - {habit.Date.ToString("dd-MM-yyyy")} - Habit: {habit.Habit} - Quantity: {habit.Quantity}");
+                }
+                Console.WriteLine("--------------------------------");
+            }
+        }
+
     }
 }
 
+public class Habits(){
+    public int Id { get; set; }
+    public DateTime Date { get; set; }
+    public string? Habit { get; set; }
+    public int Quantity { get; set; }
+}
