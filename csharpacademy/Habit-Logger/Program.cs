@@ -1,6 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using Microsoft.Data.Sqlite;
 
 namespace HabitLogger{
@@ -28,7 +29,6 @@ namespace HabitLogger{
         }
 
         static void GetUserInput(){
-            Console.Clear();
             bool closeApp = false;
             while(!closeApp){
                 Console.WriteLine("\n\nMAIN MENU");
@@ -54,7 +54,7 @@ namespace HabitLogger{
                         InsertRecord();
                         break;
                     case "3":
-                        // DeleteRecord();
+                        DeleteRecord();
                         break;
                     case "4":
                         // UpdateRecord();
@@ -135,6 +135,28 @@ namespace HabitLogger{
                 }
                 Console.WriteLine("--------------------------------");
             }
+        }
+
+        internal static void DeleteRecord(){
+            ViewRecords();
+            Console.WriteLine("Please insert the ID of the habit you would like to delete or type 0 to return to main menu.");
+            int id = Convert.ToInt32(Console.ReadLine());
+            if (id == 0){
+                GetUserInput();
+            }
+            using (var connection = new SqliteConnection(connectionString)){
+                connection.Open();
+                var tableCmd = connection.CreateCommand();
+                tableCmd.CommandText = $"DELETE FROM habits WHERE id = {id}";
+                int rowCount = tableCmd.ExecuteNonQuery();
+                if (rowCount == 0){
+                    Console.WriteLine($"\nRecord with ID {id} doesn't exist.\n");
+                    DeleteRecord(); 
+                }
+                connection.Close();
+            }
+            Console.WriteLine($"Record with id {id} has been deleted.\n");
+            // GetUserInput();
         }
 
     }
