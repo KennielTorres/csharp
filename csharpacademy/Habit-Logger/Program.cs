@@ -83,11 +83,20 @@ namespace HabitLogger{
         }
 
         internal static string? GetDateInput(){
-            Console.WriteLine("\n\nPlease insert the date: (Format: dd-mm-yyyy). Type 0 to return to main menu.");
-            string? dateInput = Console.ReadLine();
+            string? dateInput = null;
+            bool isValid = false;
+            while (!isValid){
+                Console.WriteLine("\n\nPlease insert the date: (Format: mm-dd-yyyy).");
+                dateInput = Console.ReadLine();
 
-            if (dateInput == "0"){
-                GetUserInput();
+                if (DateTime.TryParseExact(dateInput, "MM-dd-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out _))
+                {
+                    isValid = true;
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid date format. Please try again.");
+                }
             }
             return dateInput;
         }
@@ -103,8 +112,7 @@ namespace HabitLogger{
             int parsedValue;
             string? userInput;
 
-            while (true)
-            {
+            while (true){
                 userInput = Console.ReadLine();
                 if (int.TryParse(userInput, out parsedValue))
                 {
@@ -130,7 +138,7 @@ namespace HabitLogger{
                         habitsTableData.Add(
                             new Habits{
                                 Id = reader.GetInt32(0),
-                                Date = DateTime.ParseExact(reader.GetString(1), "dd-MM-yyyy", new CultureInfo("en-US")),
+                                Date = DateTime.ParseExact(reader.GetString(1), "MM-dd-yyyy", new CultureInfo("en-US")),
                                 Habit = reader.GetString(2),
                                 Quantity = reader.GetInt32(3)
                             }
@@ -144,7 +152,7 @@ namespace HabitLogger{
 
                 Console.WriteLine("\n\n----------Habits Table----------\n");
                 foreach (var habit in habitsTableData) {
-                    Console.WriteLine($"{habit.Id} - {habit.Date.ToString("dd-MM-yyyy")} - Habit: {habit.Habit} - Quantity: {habit.Quantity}");
+                    Console.WriteLine($"{habit.Id} - {habit.Date.ToString("MM-dd-yyyy")} - Habit: {habit.Habit} - Quantity: {habit.Quantity}");
                 }
                 Console.WriteLine("--------------------------------");
             }
