@@ -100,8 +100,21 @@ namespace HabitLogger{
 
         internal static int GetNumberInput(string message){
             Console.WriteLine(message);
-            string? numberInput = Console.ReadLine();
-            return Convert.ToInt32(numberInput);
+            int parsedValue;
+            string? userInput;
+
+            while (true)
+            {
+                userInput = Console.ReadLine();
+                if (int.TryParse(userInput, out parsedValue))
+                {
+                    return parsedValue;
+                }
+                else
+                {
+                    Console.WriteLine("\nInvalid input. Please insert an integer.\n");
+                }
+            }
         }
 
         internal static void ViewRecords(){
