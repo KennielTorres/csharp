@@ -2,3 +2,4 @@ csharpacademy/*/bin/
 csharpacademy/*/obj/Debug/
 csharpacademy/Calculator/*.json
 csharpacademy/*/*.db
+.vscode

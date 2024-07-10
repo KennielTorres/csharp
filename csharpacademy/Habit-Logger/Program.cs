@@ -31,7 +31,7 @@ namespace HabitLogger{
         static void GetUserInput(){
             bool closeApp = false;
             while(!closeApp){
-                Console.WriteLine("\n\nMAIN MENU");
+                Console.WriteLine("\n\n>>MAIN MENU<<");
                 Console.WriteLine("\nWhat would you like to do?");
                 Console.WriteLine("\nType 0 to Close Application.");
                 Console.WriteLine("Type 1 to View All Records.");
@@ -44,8 +44,8 @@ namespace HabitLogger{
 
                 switch(commandInput){
                     case "0":
-                        Console.WriteLine("Goodbye!");
                         closeApp = true;
+                        Console.WriteLine("Goodbye!");
                         break;
                     case "1":
                         ViewRecords();
@@ -57,10 +57,10 @@ namespace HabitLogger{
                         DeleteRecord();
                         break;
                     case "4":
-                        // UpdateRecord();
+                        UpdateRecord();
                         break;
                     default:
-                        Console.WriteLine("Invalid Input. Please type a numberfrom 0 to 4.");
+                        Console.WriteLine("Invalid Input. Please type a number from 0 to 4.");
                         break;
                 }
             }
@@ -69,7 +69,7 @@ namespace HabitLogger{
         private static void InsertRecord(){
             string? date = GetDateInput();
             string? habit = GetHabitInput();
-            int quantity = GetNumberInput("\n\nPlease insert a measure of your habit. (No decimal allowed.)\n\n");
+            int quantity = GetNumberInput("\n\nPlease insert a measure of your habit. (No decimal allowed.)\n");
             using (var connection = new SqliteConnection(connectionString)){
                 connection.Open();
                 var tableCmd = connection.CreateCommand();
@@ -139,10 +139,9 @@ namespace HabitLogger{
 
         internal static void DeleteRecord(){
             ViewRecords();
-            Console.WriteLine("Please insert the ID of the habit you would like to delete or type 0 to return to main menu.");
-            int id = Convert.ToInt32(Console.ReadLine());
+            int id = GetNumberInput("Please insert the ID of the habit you would like to update or type 0 to return to main menu.");
             if (id == 0){
-                GetUserInput();
+                return;
             }
             using (var connection = new SqliteConnection(connectionString)){
                 connection.Open();
@@ -156,8 +155,35 @@ namespace HabitLogger{
                 connection.Close();
             }
             Console.WriteLine($"Record with id {id} has been deleted.\n");
-            // GetUserInput();
         }
+
+        internal static void UpdateRecord(){
+            ViewRecords();
+            int id = GetNumberInput("Please insert the ID of the habit you would like to update or type 0 to return to main menu.");
+            if (id == 0){
+                return;
+            }
+            using (var connection = new SqliteConnection(connectionString)){
+                connection.Open();
+                var tableCmd = connection.CreateCommand();
+                tableCmd.CommandText = $"SELECT EXISTS(SELECT 1 FROM habits WHERE id = {id})";
+                int checkQuery = Convert.ToInt32(tableCmd.ExecuteScalar());
+
+                if (checkQuery == 0){
+                    Console.WriteLine($"\nRecord with ID {id} doesn't exist.\n");
+                    connection.Close();
+                    UpdateRecord();
+                }
+                string? date = GetDateInput();
+                string? habit = GetHabitInput();
+                int quantity = GetNumberInput("\n\nPlease insert a measure of your habit. (No decimal allowed.)\n\n");
+
+                tableCmd.CommandText = $"UPDATE habits SET date = '{date}', habit = '{habit}', quantity = {quantity} WHERE id = {id}";
+                tableCmd.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
 
     }
 }
