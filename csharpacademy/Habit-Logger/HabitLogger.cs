@@ -7,12 +7,14 @@ using Microsoft.VisualBasic;
 
 namespace HabitLogger{
 
-    public class HabbitLogger
-    {   
-        static string connectionString = @"Data Source=habit-logger.db";
+    public class HabitLogger
+    {       
+        private static string fileLocation = "habit-logger.db";
+        static string connectionString = @$"Data Source={fileLocation}";
         public static void Main(string[] args){
 
-            if (!File.Exists("habit-logger.db")){
+            if (!File.Exists(fileLocation))
+            {
                 using (var connection = new SqliteConnection(connectionString)){
                     connection.Open();
                     var tableCmd = connection.CreateCommand();
@@ -34,6 +36,7 @@ namespace HabitLogger{
 
         static void GetUserInput(){
             bool closeApp = false;
+
             while(!closeApp){
                 Console.WriteLine("\n\n>>MAIN MENU<<");
                 Console.WriteLine("\nWhat would you like to do?");
@@ -74,6 +77,7 @@ namespace HabitLogger{
             string? date = GetDateInput();
             string? habit = GetHabitInput();
             int quantity = GetNumberInput("\n\nPlease insert a measure of your habit. (No decimal allowed.)\n");
+
             using (var connection = new SqliteConnection(connectionString)){
                 connection.Open();
                 var tableCmd = connection.CreateCommand();
@@ -89,6 +93,7 @@ namespace HabitLogger{
         internal static string? GetDateInput(){
             string? dateInput = null;
             bool isValid = false;
+
             while (!isValid){
                 Console.WriteLine("\n\nPlease insert the date: (Format: mm-dd-yyyy).");
                 dateInput = Console.ReadLine();
@@ -133,11 +138,15 @@ namespace HabitLogger{
             using (var connection = new SqliteConnection(connectionString)){
                 connection.Open();
                 var tableCmd = connection.CreateCommand();
+
                 tableCmd.CommandText = "SELECT * FROM habits";
-                List<Habits> habitsTableData = new List<Habits>();    
+
+                List<Habits> habitsTableData = new List<Habits>();
+
                 SqliteDataReader reader = tableCmd.ExecuteReader();
 
-                if(reader.HasRows){
+                if(reader.HasRows)
+                {
                     while (reader.Read()){
                         habitsTableData.Add(
                             new Habits{
@@ -149,14 +158,15 @@ namespace HabitLogger{
                         );
                     }
                 }
-                else{
+                else
+                {
                     Console.WriteLine("No Records Found.");
                 }
                 connection.Close();
 
                 Console.WriteLine("\n\n----------Habits Table----------\n");
-                foreach (var habit in habitsTableData) {
-                    Console.WriteLine($"{habit.Id} - {habit.Date.ToString("MM-dd-yyyy")} - Habit: {habit.Habit} - Quantity: {habit.Quantity}");
+                foreach (var habit in habitsTableData){
+                    Console.WriteLine($"{habit.Id} - {habit.Date:MM-dd-yyyy} - Habit: {habit.Habit} - Quantity: {habit.Quantity}");
                 }
                 Console.WriteLine("--------------------------------");
             }
@@ -165,7 +175,9 @@ namespace HabitLogger{
         internal static void DeleteRecord(){
             ViewRecords();
             int id = GetNumberInput("Please insert the ID of the habit you would like to update or type 0 to return to main menu.");
-            if (id == 0){
+
+            if (id == 0)
+            {
                 return;
             }
             using (var connection = new SqliteConnection(connectionString)){
@@ -173,7 +185,8 @@ namespace HabitLogger{
                 var tableCmd = connection.CreateCommand();
                 tableCmd.CommandText = $"DELETE FROM habits WHERE id = {id}";
                 int rowCount = tableCmd.ExecuteNonQuery();
-                if (rowCount == 0){
+                if (rowCount == 0)
+                {
                     Console.WriteLine($"\nRecord with ID {id} doesn't exist.\n");
                     DeleteRecord(); 
                 }
@@ -185,7 +198,9 @@ namespace HabitLogger{
         internal static void UpdateRecord(){
             ViewRecords();
             int id = GetNumberInput("Please insert the ID of the habit you would like to update or type 0 to return to main menu.");
-            if (id == 0){
+
+            if (id == 0)
+            {
                 return;
             }
             using (var connection = new SqliteConnection(connectionString)){
@@ -194,11 +209,13 @@ namespace HabitLogger{
                 tableCmd.CommandText = $"SELECT EXISTS(SELECT 1 FROM habits WHERE id = {id})";
                 int checkQuery = Convert.ToInt32(tableCmd.ExecuteScalar());
 
-                if (checkQuery == 0){
+                if (checkQuery == 0)
+                {
                     Console.WriteLine($"\nRecord with ID {id} doesn't exist.\n");
                     connection.Close();
                     UpdateRecord();
                 }
+
                 string? date = GetDateInput();
                 string? habit = GetHabitInput();
                 int quantity = GetNumberInput("\n\nPlease insert a measure of your habit. (No decimal allowed.)\n\n");
@@ -211,6 +228,7 @@ namespace HabitLogger{
 
         internal static void SeedData(){
             Random rand = new Random();
+
             using (var connection = new SqliteConnection(connectionString)){
                 connection.Open();
                 var tableCmd = connection.CreateCommand();
@@ -219,6 +237,7 @@ namespace HabitLogger{
                     string date = RandomDateGenerator();
                     string[] habits = {"Run", "Eat", "Produce", "Code", "Sleep"};
                     int quantity = rand.Next(1, 100);
+                    
                     tableCmd.CommandText = $"INSERT INTO habits(date, habit, quantity) VALUES('{date}', '{habits[rand.Next(0,habits.Length)]}', {quantity})";
                     tableCmd.ExecuteNonQuery(); 
                 }
@@ -232,6 +251,7 @@ namespace HabitLogger{
             int year = rand.Next(1900, 2025);
             int month = rand.Next(1, 13);
             int day = rand.Next(1, 29);
+            
             return $"{month:D2}-{day:D2}-{year}";
         }
         
