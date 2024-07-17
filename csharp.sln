@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorLibrary", "csharp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Habit-Logger", "csharpacademy\Habit-Logger\Habit-Logger.csproj", "{05B91B15-B5D6-4B7E-8A0C-B42E8D9E98D8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Drinking-Logger", "csharpacademy\Drinking-Logger\Drinking-Logger.csproj", "{6B10A31A-EFA5-42BF-B640-ED0956C4F4BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{05B91B15-B5D6-4B7E-8A0C-B42E8D9E98D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05B91B15-B5D6-4B7E-8A0C-B42E8D9E98D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05B91B15-B5D6-4B7E-8A0C-B42E8D9E98D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B10A31A-EFA5-42BF-B640-ED0956C4F4BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B10A31A-EFA5-42BF-B640-ED0956C4F4BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B10A31A-EFA5-42BF-B640-ED0956C4F4BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B10A31A-EFA5-42BF-B640-ED0956C4F4BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{8615B491-9885-4319-A20B-5B2F415491FD} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
 		{6B51C1A2-81E0-4A7F-81B5-5DFF78DBFB7C} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
 		{05B91B15-B5D6-4B7E-8A0C-B42E8D9E98D8} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
+		{6B10A31A-EFA5-42BF-B640-ED0956C4F4BB} = {09CB8010-15EE-4212-B8AA-8550012C7D76}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A4E8BA7F-1AF4-4356-B3AD-C5D5DF6A1803}
