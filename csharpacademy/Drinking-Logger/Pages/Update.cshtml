@@ -1,0 +1,40 @@
+﻿@page
+@model Drinking_Logger.Pages.UpdateModel
+@{
+}
+
+<h4>Update Record</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <input type="hidden" asp-for="Drink.Id" />
+            <div class="form-group">
+                <label asp-for="Drink.Name" class="control-label"></label>
+                <input type="text" asp-for="Drink.Name" class="form-control" placeholder="Ex: Water"/>
+                <span asp-validation-for="Drink.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drink.Date" class="control-label"></label>
+                <input type="date" asp-for="Drink.Date" class="form-control" />
+                <span asp-validation-for="Drink.Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Drink.Quantity" class="control-label"></label>
+                <input asp-for="Drink.Quantity" class="form-control" placeholder="Ex: 1"/>
+                <span asp-validation-for="Drink.Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
